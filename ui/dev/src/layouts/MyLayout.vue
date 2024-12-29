@@ -11,7 +11,7 @@
         />
 
         <q-toolbar-title>
-          quasar-ui-casimirorocha v{{ version }}
+          quasar-ui-kit v{{ version }}
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>

@@ -19,7 +19,7 @@ function extendConf (conf, api) {
   }
 
   // make sure the stylesheet goes through webpack to avoid SSR issues
-  conf.css.push('~quasar-ui-casimirorocha/src/index.sass')
+  conf.css.push('~quasar-ui-kit/src/index.sass')
 }
 
 export default function (api) {
@@ -37,10 +37,10 @@ export default function (api) {
 
 
   // Uncomment the line below if you provide a JSON API for your component
-  // api.registerDescribeApi('MyComponent', '~quasar-ui-casimirorocha/src/components/MyComponent.json')
+  // api.registerDescribeApi('MyComponent', '~quasar-ui-kit/src/components/MyComponent.json')
 
   // Uncomment the line below if you provide a JSON API for your directive
- // api.registerDescribeApi('my-directive', '~quasar-ui-casimirorocha/src/directives/my-directive.json')
+ // api.registerDescribeApi('my-directive', '~quasar-ui-kit/src/directives/my-directive.json')
 
 
   // We extend /quasar.conf.js
