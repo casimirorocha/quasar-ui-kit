@@ -1,13 +1,11 @@
 {
-  "name": "quasar-app-extension-daddybrasil",
+  "name": "quasar-app-extension-auth",
   "version": "0.0.1",
   "description": "A Quasar App Extension",
   "author": "Casimiro Rocha <contato@crsistemas.dev.br>",
   "license": "MIT",
   "type": "module",
-  "dependencies": {
-    "quasar-ui-kit": "latest"
-  },
+  "main": "src/index.js",
   "engines": {
     "node": ">= 8.9.0",
     "npm": ">= 5.6.0",

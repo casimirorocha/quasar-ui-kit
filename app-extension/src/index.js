@@ -7,7 +7,7 @@
 
 function extendConf (conf, api) {
   // register our boot file
-  conf.boot.push('~quasar-app-extension-daddybrasil/src/boot/register.js')
+  conf.boot.push('~quasar-app-extension-auth/src/boot/register.js')
 
   if (api.hasWebpack) {
     // make sure app extension files & ui package gets transpiled
@@ -15,11 +15,11 @@ function extendConf (conf, api) {
       conf.build.webpackTranspileDependencies // q/app-webpack >= v4
       || conf.build.transpileDependencies // q/app-webpack v3
     )
-    transpileTarget.push(/quasar-app-extension-daddybrasil[\\/]src/)
+    transpileTarget.push(/quasar-app-extension-auth[\\/]src/)
   }
 
   // make sure the stylesheet goes through webpack to avoid SSR issues
-  conf.css.push('~quasar-ui-kit/src/index.sass')
+//  conf.css.push('~quasar-ui-kit/src/index.sass')
 }
 
 export default function (api) {

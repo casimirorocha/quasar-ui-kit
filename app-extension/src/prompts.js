@@ -8,63 +8,39 @@
  * https://www.npmjs.com/package/inquirer#question
  *
  * Example:
-
-  return [
-    {
-      name: 'name',
-      type: 'string',
-      required: true,
-      message: 'Quasar CLI Extension name (without prefix)',
-    },
-    {
-      name: 'preset',
-      type: 'checkbox',
-      message: 'Check the features needed for your project:',
-      choices: [
-        {
-          name: 'Install script',
-          value: 'install'
-        },
-        {
-          name: 'Prompts script',
-          value: 'prompts'
-        },
-        {
-          name: 'Uninstall script',
-          value: 'uninstall'
-        }
-      ]
-    }
-  ]
-
  */
 
 export default function (api) {
   return [
     {
-      name: 'name',
-      type: 'string',
-      required: true,
-      message: 'Quasar CLI Extension name (without prefix)',
-    },
-    {
-      name: 'preset',
+      name: 'auth',
       type: 'checkbox',
       message: 'Check the features needed for your project:',
       choices: [
-        {
-          name: 'Install script',
-          value: 'install'
-        },
-        {
-          name: 'Prompts script',
-          value: 'prompts'
-        },
-        {
-          name: 'Uninstall script',
-          value: 'uninstall'
-        }
+        { name: 'Login', value: 'login' },
+        { name: 'Register', value: 'register' },
+        { name: 'Forgot Password', value: 'forgotPassword' },
+        { name: 'Reset Password', value:'resetPassword' },
+        { name: 'Password Confirmation (Lock Screen)', value: 'passwordConfirmation' },
+        { name: 'Email Confirmation', value: 'emailConfirmation' },
+        { name: 'Social Login', value:'socialLogin' },
+        { name: 'Two-Factor Authentication', value: 'twoFactorAuthentication' },
       ]
-    }
+    },
+    {
+      name: 'authLogin',
+      type: 'checkbox',
+      required: true,
+      when: 'auth.login',
+      message: 'Since you want "Login Page", select the authentication method:',
+      choices: [
+        { name: 'Email Input', value: 'emailPassword' },
+        { name: 'Password Input', value:'passwordInput' },
+        { name: 'Show Remember-me checkbox?', value:'showRemember' },
+        { name: 'Show Forgot Password link?', value:'showForgotPassword' },
+        { name: 'Show Register Link?', value:'showRegister' },
+        { name: 'Show Social Login Buttons?', value:'showSocialLogin' },
+      ]
+    },
   ]
 }

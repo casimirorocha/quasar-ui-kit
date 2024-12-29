@@ -1,5 +1,5 @@
 <img src="https://img.shields.io/npm/v/quasar-ui-kit.svg?label=quasar-ui-kit" alt="">
-<img src="https://img.shields.io/npm/v/quasar-app-extension-daddybrasil.svg?label=quasar-app-extension-daddybrasil" alt="">
+<img src="https://img.shields.io/npm/v/quasar-app-extension-auth.svg?label=quasar-app-extension-daddybrasil" alt="">
 
 Compatible with Quasar UI v2 and Vue 3.
 

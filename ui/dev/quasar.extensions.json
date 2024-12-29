@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "auth": [
+      "login"
+    ],
+    "authLogin": [
+      "emailPassword"
+    ]
+  }
+}
