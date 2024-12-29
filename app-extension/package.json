@@ -6,7 +6,7 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "quasar-ui-daddybrasil": "latest"
+    "quasar-ui-casimirorocha": "latest"
   },
   "engines": {
     "node": ">= 8.9.0",

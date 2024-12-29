@@ -6,10 +6,12 @@
   "private": true,
   "scripts": {
     "dev": "quasar dev",
+    "dev:pwa": "quasar dev -m pwa",
     "dev:ssr": "quasar dev -m ssr",
-    "dev:ios": "quasar dev -m ios",
-    "dev:android": "quasar dev -m android",
-    "dev:electron": "quasar dev -m electron"
+    "dev:ios": "quasar dev -m capacitor -T ios",
+    "dev:android": "quasar dev -m capacitor -T android",
+    "dev:electron": "quasar dev -m electron",
+    "build:ssr": "quasar build -m ssr && cd dist/ssr && yarn start"
   },
   "browserslist": [
     "last 10 Chrome versions",

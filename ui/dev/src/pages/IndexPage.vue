@@ -23,9 +23,14 @@
 
 <script>
 import pages from '../router/pages'
+import { useMeta } from 'quasar'
 
 export default {
   setup () {
+    useMeta({
+     title: 'Home'
+    })
+
     return {
       pages
     }

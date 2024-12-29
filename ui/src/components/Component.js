@@ -1,11 +1,15 @@
 import { h } from 'vue'
-import { QBadge } from 'quasar'
+import { QBtn } from 'quasar'
 
 export default {
   name: 'MyComponent',
 
   setup () {
-    return () => h(QBadge, {
+    return () => h(QBtn, {
+      size: 'lg',
+      icon: 'add',
+      glossy: true,
+      color: 'red',
       class: 'MyComponent',
       label: 'MyComponent'
     })

@@ -3,15 +3,15 @@
     <q-header elevated>
       <q-toolbar>
         <q-btn
-          flat
           dense
+          flat
+          icon="home"
           round
           to="/"
-          icon="home"
         />
 
         <q-toolbar-title>
-          quasar-ui-daddybrasil v{{ version }}
+          quasar-ui-casimirorocha v{{ version }}
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>

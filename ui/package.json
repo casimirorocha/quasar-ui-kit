@@ -1,5 +1,5 @@
 {
-  "name": "quasar-ui-daddybrasil",
+  "name": "quasar-ui-casimirorocha",
   "version": "0.0.1",
   "author": "Casimiro Rocha <contato@crsistemas.dev.br>",
   "description": "Relacionamento classe A",
@@ -8,14 +8,16 @@
   "main": "dist/index.common.js",
   "scripts": {
     "dev": "cd dev && yarn dev && cd ..",
+    "dev:pwa": "cd dev && yarn dev:pwa && cd ..",
     "dev:umd": "yarn build && node build/script.open-umd.js",
-    "dev:ssr": "cd dev && yarn 'dev:ssr' && cd ..",
-    "dev:ios": "cd dev && yarn 'dev:ios' && cd ..",
-    "dev:android": "cd dev && yarn 'dev:android' && cd ..",
-    "dev:electron": "cd dev && yarn 'dev:electron' && cd ..",
+    "dev:ssr": "cd dev && yarn dev:ssr && cd ..",
+    "dev:ios": "cd dev && yarn dev:ios && cd ..",
+    "dev:android": "cd dev && yarn dev:android && cd ..",
+    "dev:electron": "cd dev && yarn dev:electron && cd ..",
     "build": "node build/index.js",
     "build:js": "node build/script.javascript.js",
-    "build:css": "node build/script.css.js"
+    "build:css": "node build/script.css.js",
+    "build:ssr": "cd dev && yarn build:ssr && cd dist/ssr && yarn start"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.2",

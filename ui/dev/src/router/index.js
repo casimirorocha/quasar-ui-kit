@@ -39,7 +39,7 @@ export default route(function (/* { store, ssrContext } */) {
         window.location.href = to.fullPath
         return
       }
-      reload = true
+      reload = false
       next()
     })
   }

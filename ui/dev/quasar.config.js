@@ -33,10 +33,12 @@ module.exports = function (ctx) {
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack
 
-      config: {},
+      config: {
+        dark: true
+      },
 
       // Quasar plugins
-      plugins: []
+      plugins: ['Loading', 'Dark', 'Meta', 'Notify', 'LoadingBar']
     },
 
     // animations: 'all', // --- includes all animations
