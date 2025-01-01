@@ -6,10 +6,11 @@
 
 <script>
 import { defineComponent } from 'vue'
+
 export default defineComponent({
   name: 'Test1',
   created() {
-    this.$meta({
+    this.$metaTags({
       title: 'Moreninhafreitas, 27, Feminino, Belo Horizonte, Minas Gerais',
     })
   }

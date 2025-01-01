@@ -5,7 +5,7 @@ import Component from './components/Component'
 import Directive from './directives/Directive'
 
 // Import the MetaTags composable. This is used to add meta tags to the head of the page.
-import { MetaTags } from './composable'
+import { metaTags } from './composable'
 
 // The __UI_VERSION__ variable is replaced by the actual version number during the build process using the webpack.
 const version = __UI_VERSION__
@@ -19,7 +19,7 @@ function install (app) {
   app.directive(Directive.name, Directive)
 
   // Add $meta to the Vue instance, so it can be used in components.
-  app.config.globalProperties.$meta = MetaTags
+  app.config.globalProperties.$metaTags = metaTags
 }
 
 // Export the version, component, directive and install function.

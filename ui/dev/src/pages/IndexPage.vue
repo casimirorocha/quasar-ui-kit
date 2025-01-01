@@ -1,6 +1,6 @@
 <template>
-  <q-page padding class="row justify-center">
-    <q-list dense class="list">
+  <q-page class="row justify-center" padding>
+    <q-list class="list" dense>
       <div class="text-h4 q-mb-md">Test pages</div>
       <q-item
         v-for="page in pages"
@@ -23,12 +23,12 @@
 
 <script>
 import pages from '../router/pages'
-import { useMeta } from 'quasar'
+import { metaTags } from '../../../src/composable'
 
 export default {
   setup () {
-    useMeta({
-     title: 'Home'
+    metaTags({
+      title: 'Home',
     })
 
     return {

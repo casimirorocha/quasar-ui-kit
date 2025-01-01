@@ -10,7 +10,7 @@
  * Example:
  */
 
-export default function (api) {
+/*export default function (api) {
   return [
     {
       name: 'auth',
@@ -42,5 +42,38 @@ export default function (api) {
         { name: 'Show Social Login Buttons?', value:'showSocialLogin' },
       ]
     },
+  ]
+}*/
+
+
+module.exports = function () {
+  return [
+    {
+      name: 'serviceA',
+      type: 'confirm',
+      message: 'Do you want service "A"?'
+    },
+
+    {
+      name: 'serviceB',
+      type: 'confirm',
+      message: 'Do you want service "B"?'
+    },
+
+    {
+      name: 'productName',
+      type: 'string',
+      required: true,
+      when: 'service.B',
+      message: 'Since you want service "B", what is the Product Name?',
+      default: 'MyProduct'
+    },
+
+    {
+      name: 'publishService',
+      type: 'confirm',
+      message: 'Do you want the publishing service?',
+      default: true
+    }
   ]
 }
