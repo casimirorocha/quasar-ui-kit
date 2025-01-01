@@ -4,16 +4,11 @@
   </q-page>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
+import { metaTags } from '../../../src/composable'
 
-export default defineComponent({
-  name: 'Test1',
-  created() {
-    this.$metaTags({
-      title: 'Moreninhafreitas, 27, Feminino, Belo Horizonte, Minas Gerais',
-    })
-  }
+metaTags({
+  title: 'Moreninhafreitas, 27, Feminino, Belo Horizonte, Minas Gerais',
 })
 </script>
 

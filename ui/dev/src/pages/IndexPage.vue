@@ -21,21 +21,13 @@
   </q-page>
 </template>
 
-<script>
+<script setup>
 import pages from '../router/pages'
 import { metaTags } from '../../../src/composable'
 
-export default {
-  setup () {
-    metaTags({
-      title: 'Home',
-    })
-
-    return {
-      pages
-    }
-  }
-}
+metaTags({
+  title: 'Home',
+})
 </script>
 
 <style lang="sass" scoped>

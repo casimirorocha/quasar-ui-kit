@@ -2,7 +2,7 @@ import { useMeta } from 'quasar'
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 
-export function metaTags(props) {
+export async function metaTags(props) {
   props.site_name = undefined;
   props.twitter_site = undefined;
   props.image_width = undefined;
