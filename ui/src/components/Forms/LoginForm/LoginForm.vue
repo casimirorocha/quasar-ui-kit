@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { metaTags } from '../../../composable'
-import fetchApi from '../../../composable/fetch-api'
+import { metaTags, postLogin } from '../../../composable'
 
 defineOptions({
   name: 'LoginForm',
@@ -19,18 +18,9 @@ const form = ref({
   remember: true,
 })
 
-const login = async () => {
-  await fetchApi('/login', {
-    method: 'POST',
-    body: JSON.stringify(form.value)
-  }).then(response => {
-    if (response.ok) {
-      alert('Login successful')
-    } else {
-      alert('Login failed')
-    }
-  }).catch(error => {
-    form.value.password = ''
+const submit = async () => {
+  await postLogin(form.value).finally(() => {
+    form.value.password = ""
   })
 }
 </script>
@@ -39,7 +29,7 @@ const login = async () => {
   <q-page class="flex flex-center" padding>
       <q-card bordered class="login-form shadow-24">
         <q-card-section>
-          <q-form class="q-col-gutter-lg q-pa-sm" @submit.prevent="login">
+          <q-form class="q-col-gutter-lg q-pa-sm" @submit.prevent="submit">
             <h4 class="q-my-none flex items-center">
               <q-icon class="q-mr-xs" name="lock" /> Login
             </h4>

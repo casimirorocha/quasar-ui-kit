@@ -38,7 +38,16 @@ module.exports = function (ctx) {
       },
 
       // Quasar plugins
-      plugins: ['Loading', 'LoadingBar', 'Dark', 'Meta', 'Notify', 'LoadingBar']
+      plugins: [
+        'Loading',
+        'LoadingBar',
+        'Dark',
+        'Meta',
+        'Notify',
+        'LoadingBar',
+        'LocalStorage',
+        'SessionStorage'
+      ]
     },
 
     // animations: 'all', // --- includes all animations

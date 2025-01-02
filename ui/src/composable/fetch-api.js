@@ -1,10 +1,10 @@
 // This file contains a function to fetch API data using fetch API
 
 // Import required modules
-import { Loading, Notify } from 'quasar'
+import { Loading, LocalStorage, Notify } from 'quasar'
 
 // Function to fetch API data
-export default async function fetchApi(url, options) {
+export default async function fetchApi(url = '', options = {}) {
   // Set options to empty object by default
   options = options || {};
 
@@ -30,7 +30,7 @@ export default async function fetchApi(url, options) {
   url = apiBaseUrl + url;
 
   // Add token to headers if available
-  const token = localStorage.getItem('token');
+  const token = JSON.parse(JSON.stringify(LocalStorage.getItem('token')));
 
   // Check if token is available
   if (token) {
@@ -72,4 +72,20 @@ export default async function fetchApi(url, options) {
     // Hide loading message
     Loading.hide();
   }
+}
+
+// Function to fetch login data
+export async function postLogin(form = {
+    email: String,
+    password: String,
+    remember: Boolean
+  }, url = '/login') {
+  // Set options to form data
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(form),
+  };
+
+  // Call fetchApi function with URL and options
+  return await fetchApi(url, options);
 }
