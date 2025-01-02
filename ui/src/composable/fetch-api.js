@@ -76,10 +76,11 @@ export default async function fetchApi(url = '', options = {}) {
 
 // Function to fetch login data
 export async function postLogin(form = {
-    email: String,
-    password: String,
-    remember: Boolean
-  }, url = '/login') {
+  email: String,
+  password: String,
+  remember: Boolean
+}, url = '/login') {
+
   // Set options to form data
   const options = {
     method: 'POST',
@@ -87,5 +88,104 @@ export async function postLogin(form = {
   };
 
   // Call fetchApi function with URL and options
-  return await fetchApi(url, options);
+  return await fetchApi(url, options).then(({ data }) => {
+    // Check if token is available
+    if (data?.token) {
+      // Save token to local storage
+      LocalStorage.setItem('user', data.user);
+    }
+
+    // Return data
+    return data;
+  });
 }
+
+// Function to fetch register data
+export async function postRegister(form = {
+  name: String,
+  email: String,
+  password: String,
+  password_confirmation: String
+}, url = '/register') {
+
+  // Set options to form data
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(form),
+  };
+
+  // Call fetchApi function with URL and options
+  return await fetchApi(url, options).then(({ data }) => {
+    // Check if token is available
+    if (data?.token) {
+      // Save token to local storage
+      LocalStorage.setItem('user', data.user);
+    }
+
+    // Return data
+    return postLogin({
+      email: form.email,
+      password: form.password,
+      remember: true
+    });
+  });
+}
+
+// Function to fetch logout data
+export async function postLogout(url = '/logout') {
+  // Set options to empty object
+  const options = {};
+
+  // Call fetchApi function with URL and options
+  return await fetchApi(url, options).then(() => {
+    // Remove token from local storage
+    LocalStorage.removeItem('token');
+
+    // Remove user from local storage
+    LocalStorage.removeItem('user');
+  });
+}
+
+// Function to fetch user data
+export async function getUser(options = {
+  data: {
+    id: Number | null,
+    username: String | null,
+  }
+}, url = '/user') {
+  // Call fetchApi function with URL
+  return await fetchApi(url, options).then(({ data }) => {
+    // Return data
+    return data;
+  });
+}
+
+// Function to fetch user data
+export async function putUser(form = {
+  name: String | null,
+  email: String | null,
+  password: String | null,
+  password_confirmation: String | null
+}, options = {
+  data: {
+    id: Number | null,
+    username: String | null,
+  }
+}, url = '/user') {
+  // Set options to form data
+  options.method = 'PUT';
+  options.body = JSON.stringify(form);
+
+  // Call fetchApi function with URL and options
+  return await fetchApi(url, options).then(({ data }) => {
+    // Check if token is available
+    if (data?.token) {
+      // Save token to local storage
+      LocalStorage.setItem('user', data.user);
+    }
+
+    // Return data
+    return data;
+  });
+}
+
