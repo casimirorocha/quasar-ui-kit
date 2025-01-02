@@ -1,6 +1,9 @@
 // This file is used to register the components, directive and meta tags globally.
 import Component from './components/Component'
 
+// Import the LoginForm component. This is used to display the login form.
+import LoginForm from './components/Forms/LoginForm/LoginForm.vue'
+
 // Import the Directive component. This is used to handle events.
 import Directive from './directives/Directive'
 
@@ -14,6 +17,9 @@ const version = __UI_VERSION__
 function install (app) {
   // Register the component globally.
   app.component(Component.name, Component)
+
+  // Register the login form component globally.
+  app.component(LoginForm.name, LoginForm)
 
   // Register the directive globally.
   app.directive(Directive.name, Directive)

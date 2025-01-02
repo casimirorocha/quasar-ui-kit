@@ -1,15 +1,8 @@
 <template>
-  <q-page padding>
-    <MyComponent />
-  </q-page>
+  <LoginForm />
 </template>
 
 <script setup>
-import { metaTags } from '../../../src/composable'
-
-metaTags({
-  title: 'Moreninhafreitas, 27, Feminino, Belo Horizonte, Minas Gerais',
-})
 </script>
 
 
