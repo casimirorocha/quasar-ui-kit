@@ -28,13 +28,14 @@ const submit = async () => {
 
 <template>
   <q-page class="flex flex-center" padding>
-      <q-card bordered class="register-form shadow-24">
-        <q-card-section>
-          <q-form class="q-col-gutter-lg q-pa-xs" @submit.prevent="submit">
-            <h4 class="q-my-none flex font-weight-light text-h5 text-center items-center">
-              <q-icon class="q-mr-xs" name="person_add" /> Register
-            </h4>
+    <Intersection>
+      <Card class="register-form">
+        <template #title>
+          <q-icon class="q-mr-xs" name="person_add" /> Register
+        </template>
 
+        <template #body>
+          <q-form class="q-col-gutter-lg q-pa-xs" @submit.prevent="submit">
             <q-input
                 v-model="form.name"
                 autofocus
@@ -96,8 +97,9 @@ const submit = async () => {
               />
             </div>
           </q-form>
-        </q-card-section>
-      </q-card>
+        </template>
+      </Card>
+    </Intersection>
   </q-page>
 </template>
 

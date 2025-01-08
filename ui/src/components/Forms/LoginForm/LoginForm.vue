@@ -27,67 +27,69 @@ const submit = async () => {
 
 <template>
   <q-page class="flex flex-center" padding>
-      <q-card bordered class="login-form shadow-24">
-        <q-card-section>
-          <q-form class="q-col-gutter-lg q-pa-xs" @submit.prevent="submit">
-            <h4 class="q-my-none flex font-weight-light text-h5 text-center items-center">
-              <q-icon class="q-mr-xs" name="lock" /> Login
-            </h4>
+     <Intersection>
+       <Card class="login-form">
+         <template #title>
+           <q-icon class="q-mr-xs" name="lock" /> Login
+         </template>
 
-            <q-input
-                v-model="form.email"
-                autocomplete="username"
-                autofocus filled
-                label="Email"
-                required
-                type="email"
-            >
-              <template v-slot:prepend>
-                <q-icon name="mail" />
-              </template>
-            </q-input>
+         <template #body>
+           <q-form class="q-col-gutter-lg q-pa-xs" @submit.prevent="submit">
+             <q-input
+                 v-model="form.email"
+                 autocomplete="username"
+                 autofocus filled
+                 label="Email"
+                 required
+                 type="email"
+             >
+               <template v-slot:prepend>
+                 <q-icon name="mail" />
+               </template>
+             </q-input>
 
-            <q-input
-                v-model="form.password"
-                autocomplete="new-password"
-                filled
-                label="Password"
-                required
-                type="password"
-            >
-              <template v-slot:prepend>
-                <q-icon name="password" />
-              </template>
-            </q-input>
+             <q-input
+                 v-model="form.password"
+                 autocomplete="new-password"
+                 filled
+                 label="Password"
+                 required
+                 type="password"
+             >
+               <template v-slot:prepend>
+                 <q-icon name="password" />
+               </template>
+             </q-input>
 
-            <div>
-              <q-toggle
-                  v-model="form.remember"
-                  label="Remember me"
-              />
-            </div>
+             <div>
+               <q-toggle
+                   v-model="form.remember"
+                   label="Remember me"
+               />
+             </div>
 
-            <div>
-              <q-btn class="full-width"
-                     color="primary"
-                     glossy
-                     icon-right="login"
-                     label="Login"
-                     size="1.1rem"
-                     type="submit"
-              />
-            </div>
-            <div class="text-center q-gutter-xs">
-              <div>
-                <q-btn color="primary" flat icon-right="arrow_right" label="Create an Account" size="md" to="/register" />
-              </div>
-              <div>
-                <q-btn color="grey" flat label="Forgot Password?" size="sm" />
-              </div>
-            </div>
-          </q-form>
-        </q-card-section>
-      </q-card>
+             <div>
+               <q-btn class="full-width"
+                      color="primary"
+                      glossy
+                      icon-right="login"
+                      label="Login"
+                      size="1.1rem"
+                      type="submit"
+               />
+             </div>
+             <div class="text-center q-gutter-xs">
+               <div>
+                 <q-btn color="primary" flat icon-right="arrow_right" label="Create an Account" size="md" to="/register" />
+               </div>
+               <div>
+                 <q-btn color="grey" flat label="Forgot Password?" size="sm" />
+               </div>
+             </div>
+           </q-form>
+         </template>
+       </Card>
+     </Intersection>
   </q-page>
 </template>
 

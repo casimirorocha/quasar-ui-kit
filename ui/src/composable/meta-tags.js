@@ -1,6 +1,6 @@
 import { useMeta } from 'quasar'
 import { useRouter } from 'vue-router'
-import { ref } from 'vue'
+import { inject, onBeforeMount, ref } from 'vue'
 
 export async function metaTags(props) {
   props.site_name = undefined;
@@ -60,6 +60,11 @@ export async function metaTags(props) {
       {property: 'twitter:image', content: image.value},
       {property: 'twitter:site', content: props.twitter_site ?? '@daddybrasil_app'},
     ]
+  })
+  
+  onBeforeMount(() => {
+    const bus = inject('bus') // inside setup()
+    bus.emit('page:title', title.value)
   })
 
   return {

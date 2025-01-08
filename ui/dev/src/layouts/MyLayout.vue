@@ -3,15 +3,16 @@
     <q-header elevated>
       <q-toolbar>
         <q-btn
+          v-if="$route.meta.goBack"
           dense
           flat
-          icon="home"
+          icon="arrow_back"
           round
-          to="/"
+          @click="$router.go(-1)"
         />
 
         <q-toolbar-title>
-          quasar-ui-kit v{{ version }}
+          {{ pageTitle }}
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -24,16 +25,14 @@
   </q-layout>
 </template>
 
-<script>
-import { version } from 'ui' // "ui" is aliased in quasar.conf.js
+<script setup>
+import { inject, ref } from 'vue'
 
-export default {
-  name: 'MyLayout',
+const pageTitle = ref('Quasar App')
 
-  setup () {
-    return {
-      version
-    }
-  }
-}
+const bus = inject('bus') // inside setup()
+
+bus.on('page:title', async (title) => {
+  pageTitle.value = title
+})
 </script>

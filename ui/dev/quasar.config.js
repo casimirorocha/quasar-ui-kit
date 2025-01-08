@@ -9,7 +9,8 @@ module.exports = function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     boot: [
-      'register.js'
+      'register.js',
+      'bus.js'
     ],
 
     css: [
@@ -46,7 +47,8 @@ module.exports = function (ctx) {
         'Notify',
         'LoadingBar',
         'LocalStorage',
-        'SessionStorage'
+        'SessionStorage',
+        'EventBus'
       ]
     },
 

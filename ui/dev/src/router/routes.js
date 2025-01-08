@@ -5,7 +5,8 @@ const children = pages.map(page => ({
   name: page.file,
   component: () => import('pages/' + page.file + '.vue'),
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    goBack: page.file !== 'IndexPage'
   }
 }))
 
@@ -18,7 +19,8 @@ const routes = [
         path: '', component: () => import('pages/IndexPage.vue'),
         name: 'login',
         meta: {
-          requiresAuth: false
+          requiresAuth: false,
+          goBack: false
         }
       }
     ].concat(children)
