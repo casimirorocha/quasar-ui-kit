@@ -1,7 +1,13 @@
 import { route } from 'quasar/wrappers'
-import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
+import {
+  createMemoryHistory,
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+} from 'vue-router'
 
 import routes from './routes'
+import { LocalStorage } from 'quasar'
 
 /*
  * If not building with SSR mode, you can
@@ -12,7 +18,7 @@ import routes from './routes'
  * with the Router instance.
  */
 
-export default route(function (/* { store, ssrContext } */) {
+export default route(async function ({ store, /* ssrContext */ }) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
     : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
@@ -34,12 +40,33 @@ export default route(function (/* { store, ssrContext } */) {
     console.log('!!!!')
 
     let reload = false
-    Router.beforeEach((to, _, next) => {
+
+    Router.beforeEach((to, from, next) => {
+      // Get the token from local storage
+      const token = LocalStorage.getItem('token')
+
+      console.log('Authenticated route: ' + to.matched.some(record => record.meta.requiresAuth))
+
+      // If the user is not authenticated
+      // and trying to access a protected route,
+      // redirect to login page
+      if (to.matched.some(record => record.meta.requiresAuth) && !token) {
+        // Redirect to login page with the next route as query parameter
+        next({ name: 'login', query: { next: to.fullPath } })
+      } else {
+        // If the user is authenticated and trying to access the login page,
+        // redirect to the next requested page
+        next()
+      }
+
       if (reload) {
+        // Reload the page
         window.location.href = to.fullPath
         return
       }
+
       reload = false
+
       next()
     })
   }

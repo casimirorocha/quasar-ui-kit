@@ -1,20 +1,21 @@
 <template>
-  <q-page class="row justify-center" padding>
-    <q-list class="list" dense>
-      <div class="text-h4 q-mb-md">Test pages</div>
+  <q-page class="flex flex-center" padding>
+    <q-list bordered class="list rounded-borders bg-dark" separator>
+      <q-item-label header>
+        <q-icon name="arrow_forward" /> Pages
+      </q-item-label>
       <q-item
         v-for="page in pages"
         :key="page.path"
         :to="page.path"
       >
-        <q-item-section avatar>
-          <q-icon name="pages" />
-        </q-item-section>
         <q-item-section>
-          {{ page.title }}
+          <q-item-label class="text-subtitle1">
+            <q-icon name="arrow_right" /> {{ page.title }}
+          </q-item-label>
         </q-item-section>
         <q-item-section side>
-          <q-icon name="chevron_right" />
+          <q-icon name="open_in_new" />
         </q-item-section>
       </q-item>
     </q-list>
@@ -32,6 +33,6 @@ metaTags({
 
 <style lang="sass" scoped>
 .list
-  width: 700px
+  width: 380px
   max-width: 100%
 </style>

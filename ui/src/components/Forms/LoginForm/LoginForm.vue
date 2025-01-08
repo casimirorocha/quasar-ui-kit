@@ -29,8 +29,8 @@ const submit = async () => {
   <q-page class="flex flex-center" padding>
       <q-card bordered class="login-form shadow-24">
         <q-card-section>
-          <q-form class="q-col-gutter-lg q-pa-sm" @submit.prevent="submit">
-            <h4 class="q-my-none flex items-center">
+          <q-form class="q-col-gutter-lg q-pa-xs" @submit.prevent="submit">
+            <h4 class="q-my-none flex font-weight-light text-h5 text-center items-center">
               <q-icon class="q-mr-xs" name="lock" /> Login
             </h4>
 
@@ -79,7 +79,7 @@ const submit = async () => {
             </div>
             <div class="text-center q-gutter-xs">
               <div>
-                <q-btn color="primary" flat label="Create an Account" size="1.1rem" />
+                <q-btn color="primary" flat icon-right="arrow_right" label="Create an Account" size="md" to="/register" />
               </div>
               <div>
                 <q-btn color="grey" flat label="Forgot Password?" size="sm" />

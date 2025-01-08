@@ -2,7 +2,11 @@ import pages from './pages'
 
 const children = pages.map(page => ({
   path: page.path,
-  component: () => import('pages/' + page.file + '.vue')
+  name: page.file,
+  component: () => import('pages/' + page.file + '.vue'),
+  meta: {
+    requiresAuth: true
+  }
 }))
 
 const routes = [
@@ -10,11 +14,17 @@ const routes = [
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }
+      {
+        path: '', component: () => import('pages/IndexPage.vue'),
+        name: 'login',
+        meta: {
+          requiresAuth: false
+        }
+      }
     ].concat(children)
   },
 
-  // Always leave this as last one,
+  // Always leave this as the last one,
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',

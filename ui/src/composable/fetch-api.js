@@ -5,16 +5,16 @@ import { Loading, LocalStorage, Notify } from 'quasar'
 
 // Function to fetch API data
 export default async function fetchApi(url = '', options = {}) {
-  // Set options to empty object by default
+  // Set options to an empty object by default
   options = options || {};
 
-  // Set headers to empty object by default
+  // Set headers to an empty object by default
   options.headers = options.headers || {};
 
-  // Set content type to json by default
+  // Set content type to JSON by default
   options.headers['Content-Type'] = 'application/json';
 
-  // Set except header to json by default
+  // Set except header to JSON by default
   options.headers['Accept'] = 'application/json';
 
   // Set method to GET by default
@@ -24,7 +24,7 @@ export default async function fetchApi(url = '', options = {}) {
   options.body = options.body || null;
 
   // Set API base URL from environment variable by default
-  const apiBaseUrl = 'http://192.168.0.4:8000/api';
+  const apiBaseUrl = 'http://192.168.0.17:8000/api';
 
   // Add API base URL to URL
   url = apiBaseUrl + url;
@@ -39,7 +39,7 @@ export default async function fetchApi(url = '', options = {}) {
   }
 
   try {
-    // Show loading message
+    // Show a loading message
     Loading.show();
 
     // Make API request
@@ -60,7 +60,7 @@ export default async function fetchApi(url = '', options = {}) {
     // Log error to console
     console.error(error);
 
-    // Show error message in notification
+    // Show an error message in notification
     Notify.create({
       position: 'top',
       message: error?.message,
@@ -69,7 +69,7 @@ export default async function fetchApi(url = '', options = {}) {
       timeout: 5000,
     });
   } finally {
-    // Hide loading message
+    // Hide a loading message
     Loading.hide();
   }
 }
@@ -88,16 +88,35 @@ export async function postLogin(form = {
   };
 
   // Call fetchApi function with URL and options
-  return await fetchApi(url, options).then(({ data }) => {
-    // Check if token is available
-    if (data?.token) {
-      // Save token to local storage
-      LocalStorage.setItem('user', data.user);
-    }
+ const response = await fetchApi(url, options)
 
-    // Return data
-    return data;
-  });
+  const { token, user, message } = response;
+
+  // Check if token is available
+  if (token) {
+    // Save token to local storage
+    LocalStorage.setItem('token', token);
+  }
+
+  // Check if user is available
+  if (user) {
+    // Save user to local storage
+    LocalStorage.setItem('user', user);
+  }
+
+  if  (message) {
+    // Show an error message in notification
+    Notify.create({
+      position: 'top',
+      message: message,
+      color: 'green-10',
+      icon: 'check',
+      timeout: 5000,
+    });
+  }
+
+  // Return data
+  return response;
 }
 
 // Function to fetch register data
@@ -115,34 +134,39 @@ export async function postRegister(form = {
   };
 
   // Call fetchApi function with URL and options
-  return await fetchApi(url, options).then(({ data }) => {
-    // Check if token is available
-    if (data?.token) {
-      // Save token to local storage
-      LocalStorage.setItem('user', data.user);
-    }
+  await fetchApi(url, options).then(async ({ message }) => {
+    if (message) {
+      // Show an error message in notification
+      Notify.create({
+        position: 'top',
+        message: message,
+        color: 'green-10',
+        icon: 'check',
+        timeout: 5000,
+      });
 
-    // Return data
-    return postLogin({
-      email: form.email,
-      password: form.password,
-      remember: true
-    });
-  });
+      // Log user to console
+      return postLogin({
+        email: form.email,
+        password: form.password,
+        remember: true
+      });
+    }
+  }).catch(error => { console.error(error) });
 }
 
 // Function to fetch logout data
 export async function postLogout(url = '/logout') {
-  // Set options to empty object
+  // Set options to an empty object
   const options = {};
 
   // Call fetchApi function with URL and options
   return await fetchApi(url, options).then(() => {
     // Remove token from local storage
-    LocalStorage.removeItem('token');
+    localStorage.removeItem('token');
 
     // Remove user from local storage
-    LocalStorage.removeItem('user');
+    localStorage.removeItem('user');
   });
 }
 
@@ -181,7 +205,7 @@ export async function putUser(form = {
     // Check if token is available
     if (data?.token) {
       // Save token to local storage
-      LocalStorage.setItem('user', data.user);
+      localStorage.setItem('user', data.user);
     }
 
     // Return data

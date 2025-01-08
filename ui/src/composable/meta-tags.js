@@ -33,33 +33,33 @@ export async function metaTags(props) {
         href: currentUrl.value
       }
     },
-    meta: {
+    meta: [
       // Primary Meta Tags
-      'primary:title': {name: 'title', content: title.value},
-      'primary:description': {name: 'description', content: description.value},
-      'primary:keywords': {name: 'keywords', content: keywords.value},
+      {name: 'title', content: title.value},
+      {name: 'description', content: description.value},
+      {name: 'keywords', content: keywords.value},
 
       // Open Graph / Facebook
-      'og:locale': {property: 'og:locale', content: locale.value},
-      'og:type': {property: 'og:type', content: og_type.value},
-      'og:site_name': {property: 'og:site_name', content: siteName.value},
-      'og:url': {property: 'og:url', content: currentUrl.value},
-      'og:title': {property: 'og:title', content: title.value},
-      'og:description': {property: 'og:description', content: description.value},
-      'og:image': {property: 'og:image', content: image.value},
-      'og:image:width': {property: 'og:image:width', content: image_width.value},
-      'og:image:height': {property: 'og:image:height', content: image_height.value},
-      'og:image:type': {property: 'og:image:type', content: image_type.value},
-      'og:image:alt': {property: 'og:image:alt', content: image_alt.value},
+      {property: 'og:locale', content: locale.value},
+      {property: 'og:type', content: og_type.value},
+      {property: 'og:site_name', content: siteName.value},
+      {property: 'og:url', content: currentUrl.value},
+      {property: 'og:title', content: title.value},
+      {property: 'og:description', content: description.value},
+      {property: 'og:image', content: image.value},
+      {property: 'og:image:width', content: image_width.value},
+      {property: 'og:image:height', content: image_height.value},
+      {property: 'og:image:type', content: image_type.value},
+      {property: 'og:image:alt', content: image_alt.value},
 
       // Twitter
-      'twitter:card': {property: 'twitter:card', content: 'summary_large_image'},
-      'twitter:url': {property: 'twitter:url', content: currentUrl.value},
-      'twitter:title': {property: 'twitter:title', content: title.value},
-      'twitter:description': {property: 'twitter:description', content: description.value},
-      'twitter:image': {property: 'twitter:image', content: image.value},
-      'twitter:site': {property: 'twitter:site', content: props.twitter_site ?? '@daddybrasil_app'},
-    }
+      {property: 'twitter:card', content: 'summary_large_image'},
+      {property: 'twitter:url', content: currentUrl.value},
+      {property: 'twitter:title', content: title.value},
+      {property: 'twitter:description', content: description.value},
+      {property: 'twitter:image', content: image.value},
+      {property: 'twitter:site', content: props.twitter_site ?? '@daddybrasil_app'},
+    ]
   })
 
   return {

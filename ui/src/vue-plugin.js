@@ -3,23 +3,27 @@ import Component from './components/Component'
 
 // Import the LoginForm component. This is used to display the login form.
 import LoginForm from './components/Forms/LoginForm/LoginForm.vue'
+import RegisterForm from './components/Forms/RegisterForm/RegisterForm.vue'
 
 // Import the Directive component. This is used to handle events.
 import Directive from './directives/Directive'
 
-// Import the MetaTags composable. This is used to add meta tags to the head of the page.
+// Import the MetaTags composable. This is used to add meta-tags to the head of the page.
 import { metaTags } from './composable'
 
 // The __UI_VERSION__ variable is replaced by the actual version number during the build process using the webpack.
 const version = __UI_VERSION__
 
-// The installation function is used to register the components, directive and meta tags globally.
+// The installation function is used to register the components, directive and meta-tags globally.
 function install (app) {
   // Register the component globally.
   app.component(Component.name, Component)
 
   // Register the login form component globally.
   app.component(LoginForm.name, LoginForm)
+
+  // Register the register form component globally.
+  app.component(RegisterForm.name, RegisterForm)
 
   // Register the directive globally.
   app.directive(Directive.name, Directive)
