@@ -1,12 +1,13 @@
 <script setup>
-import { ref } from 'vue'
-import { metaTags, postLogin } from '../../../composable'
+import { inject, ref } from 'vue'
+import { postLogin } from '../../../composable'
 
 defineOptions({
   name: 'LoginForm',
 })
+const meta = inject('meta') // inside setup()
 
-metaTags({
+meta({
   title: 'Login',
   description: 'Login to your account to access our services',
   keywords: 'login, registration, authentication, daddybrasil'

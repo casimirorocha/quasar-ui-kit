@@ -1,12 +1,14 @@
 <script setup>
-import { ref } from 'vue'
-import { metaTags, postRegister } from '../../../composable'
+import { inject, ref } from 'vue'
+import { postRegister } from '../../../composable'
 
 defineOptions({
   name: 'RegisterForm',
 })
 
-metaTags({
+const meta = inject('meta') // inside setup()
+
+meta({
   title: 'Register',
   description: 'Register to access our platform',
   keywords: 'register, sign up, sign-up, signup, sign-in, login, sign in, signing, daddybrasil'

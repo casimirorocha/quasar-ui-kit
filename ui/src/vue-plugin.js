@@ -36,8 +36,11 @@ function install (app) {
   // Register the directive globally.
   app.directive(Directive.name, Directive)
 
-  // Add $meta to the Vue instance, so it can be used in components.
-  app.config.globalProperties.$metaTags = metaTags
+  // // for Options API | Add $meta to the Vue instance, so it can be used in components.
+  app.config.globalProperties.$meta = metaTags
+
+  // for Composition API
+  app.provide('meta', metaTags)
 }
 
 // Export the version, component, directive and install function.
@@ -48,6 +51,7 @@ export {
   RegisterForm, // The register form component.
   Intersection, // The intersection component
   Card, // The card component.
+  metaTags, // The meta-tags composable.
   Directive, // The directive that is used to handle events.
   install // The function that is used to register the components, directive and meta tags globally.
 }

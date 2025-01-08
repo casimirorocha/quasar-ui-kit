@@ -26,9 +26,11 @@
 
 <script setup>
 import pages from '../router/pages'
-import { metaTags } from '../../../src/composable'
+import { inject } from 'vue'
 
-metaTags({
+const meta = inject('meta') // inside setup()
+
+meta({
   title: 'Home',
 })
 </script>
