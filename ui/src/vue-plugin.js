@@ -1,10 +1,8 @@
 // This file is used to register the components, directive and meta-tags globally.
 import Component from './components/Component'
-
-// Import the LoginForm component. This is used to display the login form.
+import Card from './components/Cards/Card.vue'
 import LoginForm from './components/Forms/LoginForm/LoginForm.vue'
 import RegisterForm from './components/Forms/RegisterForm/RegisterForm.vue'
-import Card from './components/Cards/Card.vue'
 import Intersection from './components/Intersection/Intersection.vue'
 
 // Import the Directive component. This is used to handle events.

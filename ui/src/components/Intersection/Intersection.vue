@@ -11,5 +11,4 @@ defineOptions({
 </template>
 
 <style lang="sass" scoped>
-
 </style>
