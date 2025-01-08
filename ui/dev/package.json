@@ -31,5 +31,8 @@
   },
   "devDependencies": {
     "quasar-app-extension-auth": "file:../../app-extension"
+  },
+  "dependencies": {
+    "vue-i18n": "^11.0.1"
   }
 }

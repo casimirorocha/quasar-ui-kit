@@ -3,7 +3,7 @@
     <Intersection>
       <q-list bordered class="list rounded-borders bg-dark" separator>
         <q-item-label header>
-          <q-icon name="arrow_forward" /> Pages
+          <q-icon name="arrow_forward" /> {{ $t('pages.home.title') }}
         </q-item-label>
         <q-item
           v-for="page in pages"
@@ -27,11 +27,14 @@
 <script setup>
 import pages from '../router/pages'
 import { inject } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const meta = inject('meta') // inside setup()
 
+const { t } = useI18n({ useScope: "global" });
+
 meta({
-  title: 'Home',
+  title: t('pages.home.title'),
 })
 </script>
 

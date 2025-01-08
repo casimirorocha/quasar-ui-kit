@@ -1,16 +1,20 @@
 <script setup>
 import { inject, ref } from 'vue'
 import { postLogin } from '../../../composable'
+import { useI18n } from 'vue-i18n'
 
 defineOptions({
   name: 'LoginForm',
 })
+
 const meta = inject('meta') // inside setup()
 
+const { t } = useI18n({ useScope: "global" });
+
 meta({
-  title: 'Login',
-  description: 'Login to your account to access our services',
-  keywords: 'login, registration, authentication, daddybrasil'
+  title: t('pages.login.title'),
+  description: t('pages.login.description'),
+  keywords: t('pages.login.keywords'),
 })
 
 const form = ref({

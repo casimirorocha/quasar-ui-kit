@@ -10,7 +10,8 @@ module.exports = function (ctx) {
     // --> boot files are part of "main.js"
     boot: [
       'register.js',
-      'bus.js'
+      'bus.js',
+      'i18n.js',
     ],
 
     css: [
@@ -35,7 +36,7 @@ module.exports = function (ctx) {
       // lang: 'en-US', // Quasar language pack
 
       config: {
-        dark: true
+        dark: true, // Enable dark mode
       },
 
       // Quasar plugins

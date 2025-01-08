@@ -9,7 +9,7 @@ import Intersection from './components/Intersection/Intersection.vue'
 import Directive from './directives/Directive'
 
 // Import the MetaTags composable. This is used to add meta-tags to the head of the page.
-import { metaTags } from './composable'
+import { getSettings, metaTags } from './composable'
 
 // The __UI_VERSION__ variable is replaced by the actual version number during the build process using the webpack.
 const version = __UI_VERSION__
@@ -39,6 +39,10 @@ function install (app) {
 
   // for Composition API
   app.provide('meta', metaTags)
+
+  app.config.globalProperties.$settings = getSettings
+
+  app.provide('settings', getSettings)
 }
 
 // Export the version, component, directive and install function.
@@ -50,6 +54,7 @@ export {
   Intersection, // The intersection component
   Card, // The card component.
   metaTags, // The meta-tags composable.
+  getSettings, // The function that is used to get the settings.
   Directive, // The directive that is used to handle events.
   install // The function that is used to register the components, directive and meta tags globally.
 }
